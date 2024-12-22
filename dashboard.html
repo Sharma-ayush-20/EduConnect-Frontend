@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .decagon {
+      clip-path: polygon(
+        50% 0%,
+        80% 10%,
+        100% 40%,
+        100% 70%,
+        80% 100%,
+        50% 100%,
+        20% 100%,
+        0% 70%,
+        0% 40%,
+        20% 10%
+      );
+    }
+    </style>
+
+  </head>
+  <body class="bg-gray-100">
+    <div class="flex h-screen">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-[#1a2634] p-6 flex flex-col">
+        <div class="text-white text-xl font-bold mb-8">DEFILAB</div>
+        <div class="flex items-center mb-8">
+          <div class="w-10 h-10 rounded-full bg-gray-600 mr-3"></div>
+          <div>
+            <div class="text-white">Esther Howard</div>
+            <div class="text-sm text-gray-400">Pro</div>
+          </div>
+        </div>
+        <nav class="flex-grow">
+          <a
+            href="#"
+            class="block text-white py-2 px-4 rounded hover:bg-white/10 mb-1"
+            >DeFi</a
+          >
+          <a
+            href="#"
+            class="block text-white py-2 px-4 rounded hover:bg-white/10 mb-1"
+            >Value</a
+          >
+          <a
+            href="#"
+            class="block text-white py-2 px-4 rounded hover:bg-white/10 mb-1"
+            >DEXs</a
+          >
+          <a
+            href="#"
+            class="block text-white py-2 px-4 rounded hover:bg-white/10 mb-1"
+            >Protocols</a
+          >
+          <a
+            href="#"
+            class="block text-white py-2 px-4 rounded hover:bg-white/10 mb-1"
+            >Settings</a
+          >
+        </nav>
+        <a href="#" class="block text-white py-2 px-4 rounded hover:bg-white/10"
+          >Log out</a
+        >
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-8 overflow-auto">
+        <header class="flex justify-between items-center mb-8">
+          <h1 class="text-2xl font-semibold">Welcome back, Esther!</h1>
+          <button class="p-2 bg-white rounded-full shadow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <!-- TVL Card -->
+        <div class="bg-[#1a2634] text-white rounded-lg p-6 mb-8">
+          <div class="flex justify-between items-center mb-4">
+            <div class="text-sm">TVL 2022</div>
+            <div
+              class="bg-green-500/20 text-green-500 px-2 py-1 rounded-full text-xs"
+            >
+              +15%
+            </div>
+          </div>
+          <div class="text-3xl font-bold mb-4">$43.35B</div>
+          <div class="h-40 bg-white/10 rounded"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Protocols Chart -->
+          <div class="bg-white rounded-lg p-6">
+            <h2 class="text-lg font-semibold mb-4">Top Protocols</h2>
+            <div class=" w-full flex justify-center items-center  ">
+
+              <div class=" h-40 w-40 flex flex-col justify-center items-center bg-purple-400 text-white p-5 rounded-full">
+                <h1 class="text-3xl font-semibold">20%</h1>
+                <p class="text-lg ">Etherum</p>
+              </div>
+              <div class=" h-48 w-32 relative text-white">
+
+                <div class=" decagon h-28 w-28  z-[9999] absolute top-0 -left-8 bg-green-300 flex flex-col justify-center items-center">
+                  <h1 class="text-2xl font-semibold">20%</h1>
+                <p class="text-md ">BTC</p>
+                </div>
+                <div class=" decagon h-24 w-24 bg-blue-300 absolute bottom-5 right-5 z-[999999] flex flex-col justify-center items-center">
+                  <h1 class="text-2xl font-semibold">20%</h1>
+                <p class="text-md ">BTC</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <!-- TVL Rankings -->
+          <div class="bg-white rounded-lg p-6 col-span-2">
+            <h2 class="text-lg font-semibold mb-4">TVL Rankings</h2>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between pb-2 border-b">
+                <div class="flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-purple-100 mr-3"></div>
+                  <span>MakerDAO</span>
+                </div>
+                <div class="text-green-500 text-sm">+3.12%</div>
+              </div>
+              <div class="flex items-center justify-between pb-2 border-b">
+                <div class="flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-blue-100 mr-3"></div>
+                  <span>Convex</span>
+                </div>
+                <div class="text-red-500 text-sm">-0.07%</div>
+              </div>
+              <div class="flex items-center justify-between pb-2 border-b">
+                <div class="flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-green-100 mr-3"></div>
+                  <span>InstaDapp</span>
+                </div>
+                <div class="text-green-500 text-sm">+0.87%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
