@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        .extra-content {
+            max-height: 0;
+            overflow: hidden;
+            visibility: hidden; 
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease, visibility 0s 0.5s;
+        }
+        .card:hover .extra-content {
+            max-height: 400px; 
+            visibility: visible;
+            opacity: 1;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+        }
+        .card:hover {
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+        }
+    </style>
+</head>
+<body style="background-color: rgb(226, 226, 226);">
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card" style="width: 100%;">
+                    <img src="https://images.unsplash.com/photo-1736355895984-a07a970ead7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Executive Post Graduate Certification in Product Management</h5>
+                        <p class="card-text fw-600">Next Cohort: 11th Jan 2025</p>
+                        <p class="card-text fw-bold">9 Months</p>
+                        <div class="extra-content">
+                            <p class="text-center border-top border-bottom py-1 km">Know More</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat for other cards -->
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card" style="width: 100%;">
+                    <img src="https://images.unsplash.com/photo-1736355895984-a07a970ead7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Executive Post Graduate Certification in Product Management</h5>
+                        <p class="card-text fw-600">Next Cohort: 11th Jan 2025</p>
+                        <p class="card-text fw-bold">9 Months</p>
+                        <div class="extra-content">
+                            <p class="text-center border-top border-bottom py-1 km">Know More</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card" style="width: 100%;">
+                    <img src="https://images.unsplash.com/photo-1736355895984-a07a970ead7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyfHx8ZW58MHx8fHx8" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Executive Post Graduate Certification in Product Management</h5>
+                        <p class="card-text fw-600">Next Cohort: 11th Jan 2025</p>
+                        <p class="card-text fw-bold">9 Months</p>
+                        <div class="extra-content">
+                            <p class="text-center border-top border-bottom py-1 km">Know More</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

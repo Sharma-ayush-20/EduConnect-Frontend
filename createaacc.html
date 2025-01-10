@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an Account</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #2c2c54;
+      color: #ffffff;
+    }
+    .left-section {
+      background-color: #3b3b58;
+      background-size: cover;
+      position: relative;
+    }
+    .left-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .left-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 20px;
+    }
+    .left-content h1 {
+      font-size: 2rem;
+    }
+    .form-section {
+      padding: 50px;
+      background-color: #3b3b58;
+      border-radius: 10px;
+    }
+    .form-control, .btn {
+      border-radius: 5px;
+    }
+    .btn-primary {
+      background-color: #6c5ce7;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #5a4dcc;
+    }
+    .form-check-label {
+      color: #ffffff;
+    }
+    .btn-google, .btn-apple {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-google {
+      background-color: #ffffff;
+      color: #000;
+    }
+    .btn-apple {
+      background-color: #000;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid vh-100 d-flex">
+    <div class="row w-100">
+      <div class="col-md-6 left-section d-none d-md-block">
+        <div class="left-content d-flex flex-column justify-content-center h-100">
+          <a href="#" class="text-light mb-4 text-decoration-none">Back to website</a>
+          <h1>Capturing Moments, <br>Creating Memories</h1>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex align-items-center">
+        <div class="form-section w-100">
+          <h2 class="mb-4">Create an account</h2>
+          <p>Already have an account? <a href="#" class="text-primary">Log in</a></p>
+          <form>
+            <div class="row mb-3">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" placeholder="Enter your password">
+            </div>
+            <div class="form-check mb-3">
+              <input type="checkbox" class="form-check-input" id="terms">
+              <label class="form-check-label" for="terms">I agree to the <a href="#" class="text-primary">Terms & Conditions</a></label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-3">Create account</button>
+            <p class="text-center mb-3">Or register with</p>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-google w-50">
+                <img src="https://img.icons8.com/color/16/000000/google-logo.png"/> Google
+              </button>
+              <button type="button" class="btn btn-apple w-50">
+                <img src="https://img.icons8.com/ios-filled/16/ffffff/mac-os.png"/> Apple
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

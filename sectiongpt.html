@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Card</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .plan-card {
+      border-top: 4px solid #6c63ff; /* Purple color */
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .plan-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .plan-header h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .plan-subtitle {
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+
+    .plan-price {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #343a40;
+    }
+
+    .plan-details {
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin: 10px 0;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .plan-features li svg {
+      color: #28a745;
+      margin-right: 8px;
+    }
+
+    .btn-primary {
+      background-color: #6c63ff;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .btn-primary:hover {
+      background-color: #5b54e4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="plan-card">
+      <div class="plan-header">
+        <div>
+          <h3 class="mb-0">Personal Plan</h3>
+          <p class="plan-subtitle">For you</p>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a5 5 0 0 0-4.546 2.916A4.977 4.977 0 0 0 3 14h10a4.977 4.977 0 0 0-.454-2.084A5 5 0 0 0 8 9z"/>
+          </svg>
+          <span>Individual</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="plan-price">Starting at ₹850 per month</p>
+        <p class="plan-details">Billed monthly or annually. Cancel anytime.</p>
+        <a href="#" class="btn btn-primary btn-lg d-flex align-items-center justify-content-center">
+          Start subscription
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right ms-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10.854 8.354a.5.5 0 0 0 0-.708l-4-4a.5.5 0 1 0-.708.708L9.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z"/>
+          </svg>
+        </a>
+      </div>
+
+      <ul class="plan-features list-unstyled mt-3">
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M15.854 8a7 7 0 1 1-1.61-4.746L12.207 6.56a.5.5 0 1 1-.707-.707L13.54 2.293a7 7 0 0 1 1.355.476z"/>
+            <path d="M8.5 5.207a.5.5 0 0 1-.707.707L4.707 3.854a.5.5 0 0 1 .707-.707L8.5 5.207zm0 5.586a.5.5 0 0 1-.707-.707L4.707 9.146a.5.5 0 1 1 .707-.707l3.086 3.086a.5.5 0 0 1 .707.707z"/>
+          </svg>
+          Access to 12,000+ top courses
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M15.854 8a7 7 0 1 1-1.61-4.746L12.207 6.56a.5.5 0 1 1-.707-.707L13.54 2.293a7 7 0 0 1 1.355.476z"/>
+            <path d="M8.5 5.207a.5.5 0 0 1-.707.707L4.707 3.854a.5.5 0 0 1 .707-.707L8.5 5.207zm0 5.586a.5.5 0 0 1-.707-.707L4.707 9.146a.5.5 0 1 1 .707-.707l3.086 3.086a.5.5 0 0 1 .707.707z"/>
+          </svg>
+          Certification prep
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M15.854 8a7 7 0 1 1-1.61-4.746L12.207 6.56a.5.5 0 1 1-.707-.707L13.54 2.293a7 7 0 0 1 1.355.476z"/>
+            <path d="M8.5 5.207a.5.5 0 0 1-.707.707L4.707 3.854a.5.5 0 0 1 .707-.707L8.5 5.207zm0 5.586a.5.5 0 0 1-.707-.707L4.707 9.146a.5.5 0 1 1 .707-.707l3.086 3.086a.5.5 0 0 1 .707.707z"/>
+          </svg>
+          Goal-focused recommendations
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M15.854 8a7 7 0 1 1-1.61-4.746L12.207 6.56a.5.5 0 1 1-.707-.707L13.54 2.293a7 7 0 0 1 1.355.476z"/>
+            <path d="M8.5 5.207a.5.5 0 0 1-.707.707L4.707 3.854a.5.5 0 0 1 .707-.707L8.5 5.207zm0 5.586a.5.5 0 0 1-.707-.707L4.707 9.146a.5.5 0 1 1 .707-.707l3.086 3.086a.5.5 0 0 1 .707.707z"/>
+          </svg>
+          AI-powered coding exercises
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

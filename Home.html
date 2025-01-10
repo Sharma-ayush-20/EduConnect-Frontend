@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home...</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(255, 255, 255);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .main{
+            background-color: rgb(178, 176, 176);
+            border-radius: 10px;
+            padding: 1%;
+            /* margin-right: 20px; */
+        }
+        button:hover{
+            background-color: rgb(70, 97, 255);
+        }
+        /* img{
+            background-color: rgb(178, 176, 176);
+            position: relative;
+        } */
+
+        /* section2 */
+
+        .career-section {
+  text-align: center;
+  padding: 20px 0;
+  /* background-color: #888; */
+}
+.career-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+ margin-right: 86px;
+}
+.career-options {
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 5%;
+  /* background-color: azure; */
+  /* border: 2px solid black; */
+}
+.option {
+  text-align: center;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 1%;
+  background-color: rgb(148, 180, 238);
+}
+.option img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+.option h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.option p {
+  font-size: 14px;
+  color: #1c1c1c;
+}
+
+.container3 {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .categories {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        .category {
+            background: #5c5c5c;
+            padding: 10px 20px;
+            border-radius: 20px;
+            white-space: nowrap;
+            cursor: pointer;
+            color: #fff;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #212121;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(143, 143, 143, 0.2);
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .card .content {
+            padding: 15px;
+        }
+        .card .content h3 {
+            font-size: 16px;
+            margin: 10px 0;
+            color: white;
+        }
+        .card .content p {
+            font-size: 14px;
+            color: #bbb;
+        }
+        .card .rating {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            color: #fbc02d;
+            margin: 10px 0;
+        }
+        .card .price {
+            color: #39e639;
+            font-size: 18px;
+        }
+        .badge {
+            display: inline-block;
+            background: #ff5733;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .badge.bestseller {
+            background: #ffc107;
+        }
+        /* section4 */
+        .container4 {
+            /* background-color: #5c5c5c; */
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .goals {
+            flex: 1;
+        }
+        .goals h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .goal {
+            background: #383838;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .goal i {
+            color: #ffcc00;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .goal h3 {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #e9e9e9;
+        }
+        .goal p {
+            margin: 0;
+            color: #e9e9e9;
+            font-size: 14px;
+        }
+        .goal a {
+            color: #39e639;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .goal .badge {
+            background: #6200ea;
+            color: white;
+            padding: 2px 6px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        .visualization {
+            margin-top: 70px;
+            flex: 1;
+            background: #787878;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .visualization h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: rgb(195, 191, 191);
+        }
+        .visualization img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* section5 */
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin: 2rem 0;
+        }
+
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0 1rem;
+        }
+
+        .pricing-card {
+            background-color: #292929;
+            border: 1px solid #444;
+            border-radius: 8px;
+            max-width: 320px;
+            flex: 1;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        .pricing-card h2 {
+            font-size: 1.5rem;
+            margin: 0 0 1rem;
+            color: white;
+        }
+
+        .pricing-card .price {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            font-weight: bold;
+            color: white;
+        }
+
+        .pricing-card .features {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+            color: white;
+        }
+
+        .pricing-card .features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .features li::before {
+            content: '\2713';
+            color: #4caf50;
+            margin-right: 0.5rem;
+        }
+
+        .pricing-card .button {
+            display: inline-block;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .pricing-card .button:hover {
+            background-color: #45a049;
+        }
+
+        .enterprise-plan {
+            border-color: #6a0dad;
+        }
+
+        .enterprise-plan .button {
+            background-color: #6a0dad;
+        }
+
+        .enterprise-plan .button:hover {
+            background-color: #5c0c97;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+           <div class="heading">
+            <h3 
+            style="text-align: center; color: rgb(25, 109, 43); font-weight: 200;">New year. Big goals. Bigger savings. Unlock a year of unlimited access to learning with Coursera Plus for ₹7,499. Save now</h3>
+           </div>
+           <div class="main">
+            <div style="margin-left: 9%; font-size:30px; margin-bottom: 10px; color: rgb(24, 105, 255);
+            font-weight: 600;">EduConnect</div>
+            <div style="margin-left: 9%; font-size: 40px; font-weight: 700;">Achieve your career goals with</div>
+            <div style="margin-left: 9%; font-size: 40px; font-weight: 700; margin-bottom: 10px;">Coursera Plus</div>
+            <div style="margin-left: 9%; font-size: 17px; font-weight: 300; margin-bottom: 10px;">4,998/month, cancel anytime</div>
+            <div style="margin-left: 9%; font-size: 17px; font-weight: 300; margin-bottom: 10px;">Subscribe to build job-ready skills from world-class institutions.</div>
+             <button
+             style="background-color: rgb(99, 140, 254); color: whitesmoke; 
+             margin-left: 9%; padding: 15px; border-radius: 15px; font-weight: 500; font-size: 17px;
+             border: 0px solid white; cursor: pointer; margin-bottom: 10px;">Start 7-day Free Trial</button>
+             <div style="margin-left: 9%; font-size: 17px; font-weight: 700; margin-bottom: 10px;
+             color: rgb(8, 92, 0);">or $15/year with 14-day money-back gurantee</div>
+            </div>
+        </div>
+        <!-- <div class="container2">
+            <img width="500px" height="270px" style="border-radius: 20px; margin-top: 50px;"
+            src="https://plus.unsplash.com/premium_photo-1725404428224-664f5f0217b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8" alt="image">
+        </div> -->
+    </section>
+
+    <section>
+        <div class="career-section">
+            <h2>Invest in your career</h2>
+            <div class="career-options">
+              <div class="option">
+                <img src="explore-new-skills-icon.svg" alt="Explore New Skills">
+                <h3>Explore new skills</h3>
+                <p>Access 10,000+ courses in AI, business, technology, and more.</p>
+              </div>
+              <div class="option">
+                <img src="earn-valuable-credentials-icon.svg" alt="Earn Valuable Credentials">
+                <h3>Earn valuable credentials</h3>
+                <p>Get certificates for every course you finish and boost your chances of getting hired.</p>
+              </div>
+              <div class="option">
+                <img src="learn-from-the-best-icon.svg" alt="Learn from the Best">
+                <h3>Learn from the best</h3>
+                <p>Take your skills to the next level, your AI-powered guide.</p>
+              </div>
+            </div>
+          </div>
+    </section>
+
+    <section class="section3">
+        <div class="container3">
+            <div class="categories">
+                <div class="category">ChatGPT <span>3M+ learners</span></div>
+                <div class="category">Data Science <span>7M+ learners</span></div>
+                <div class="category">Python <span>46.6M+ learners</span></div>
+                <div class="category">Machine Learning <span>8M+ learners</span></div>
+                <div class="category">Deep Learning <span>2M+ learners</span></div>
+                <div class="category">Artificial Intelligence <span>3M+ learners</span></div>
+            </div>
+    
+            <div class="cards">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x150" alt="Course Image">
+                    <div class="content">
+                        <h3>ChatGPT Complete Guide</h3>
+                        <p>Learn Generative AI, ChatGPT & More</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">₹399 <span style="text-decoration: line-through; color: #888;">₹2,699</span></div>
+                        <div class="badge bestseller">Bestseller</div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x150" alt="Course Image">
+                    <div class="content">
+                        <h3>AI-Powered Copywriting</h3>
+                        <p>The Complete Course for Success</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">₹399 <span style="text-decoration: line-through; color: #888;">₹3,099</span></div>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x150" alt="Course Image">
+                    <div class="content">
+                        <h3>ChatGPT & Midjourney</h3>
+                        <p>Digital Marketing Assistants</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="price">₹399 <span style="text-decoration: line-through; color: #888;">₹799</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section4" style="background-color: #bbb;">
+        <div class="container4">
+            <div class="goals">
+                <h2>Learning focused on your goals</h2>
+                <div class="goal">
+                    <i class="fas fa-hands"></i>
+                    <h3>Hands-on training</h3>
+                    <p>Upskill effectively with AI-powered coding exercises, practice tests, and quizzes.</p>
+                </div>
+                <div class="goal">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certification prep</h3>
+                    <p>Prep for industry-recognized certifications by solving real-world challenges and earning badges along the way.</p>
+                    <a href="#">Explore courses →</a>
+                </div>
+                <div class="goal">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Insights and analytics <span class="badge">Enterprise Plan</span></h3>
+                    <p>Fast-track goals with advanced insights plus a dedicated customer success team to help drive effective learning.</p>
+                    <a href="#">Find out more →</a>
+                </div>
+                <div class="goal">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Customizable content <span class="badge">Enterprise Plan</span></h3>
+                    <p>Create tailored learning paths for team and organization goals and even host your own content and resources.</p>
+                    <a href="#">Find out more →</a>
+                </div>
+            </div>
+    
+            <div class="visualization">
+                <h3>Containerization</h3>
+                <p>Your score: 159</p>
+                <img src="https://via.placeholder.com/400x300" alt="Score Visualization">
+                <p>Your performance was better than 88% of learners who completed this assessment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section5">
+        <h1>Accelerate growth — for you or your organization</h1>
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <h2>Personal Plan</h2>
+                <p>For you <br> <small>Individual</small></p>
+                <p class="price">Starting at ₹850 per month</p>
+                <p>Billed monthly or annually. Cancel anytime.</p>
+                <a href="#" class="button">Start subscription</a>
+                <ul class="features">
+                    <li>Access to 12,000+ top courses</li>
+                    <li>Certification prep</li>
+                    <li>Goal-focused recommendations</li>
+                    <li>AI-powered coding exercises</li>
+                </ul>
+            </div>
+    
+            <div class="pricing-card">
+                <h2>Team Plan</h2>
+                <p>For your team <br> <small>2 to 20 people</small></p>
+                <p class="price">₹2,000 a month per user</p>
+                <p>Billed annually. Cancel anytime.</p>
+                <a href="#" class="button">Start subscription</a>
+                <ul class="features">
+                    <li>Access to 12,000+ top courses</li>
+                    <li>Certification prep</li>
+                    <li>Goal-focused recommendations</li>
+                    <li>AI-powered coding exercises</li>
+                    <li>Analytics and adoption reports</li>
+                </ul>
+            </div>
+    
+            <div class="pricing-card enterprise-plan">
+                <h2>Enterprise Plan</h2>
+                <p>For your whole organization <br> <small>More than 20 people</small></p>
+                <p class="price">Contact sales for pricing</p>
+                <a href="#" class="button">Request a demo</a>
+                <ul class="features">
+                    <li>Access to 27,000+ top courses</li>
+                    <li>Certification prep</li>
+                    <li>Goal-focused recommendations</li>
+                    <li>AI-powered coding exercises</li>
+                    <li>Advanced analytics and insights</li>
+                    <li>Dedicated customer success team</li>
+                    <li>International course collection featuring 15 languages</li>
+                    <li>Customizable content</li>
+                    <li>Hands-on tech training with add-on</li>
+                    <li>Strategic implementation services with add-on</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

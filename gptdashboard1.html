@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Themed Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e2f;
+      color: #ffffff;
+    }
+    .sidebar {
+      background: #2a2a3b;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .sidebar .menu-item {
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      color: #ffffff;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .sidebar .menu-item:hover {
+      background: #3a3a4b;
+      text-decoration: none;
+    }
+    .card {
+      background-color: #2e2e40;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .chart-container {
+      height: 200px;
+    }
+    .text-highlight {
+      color: #ffc107;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar">
+        <h5 class="text-center fw-bold mb-4">Dashboard</h5>
+        <div>
+          <a href="#" class="menu-item">Home</a>
+          <a href="#" class="menu-item">Customers</a>
+          <a href="#" class="menu-item">Organizations</a>
+          <a href="#" class="menu-item">Settings</a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-md-10">
+        <div class="row mt-4">
+          <!-- Cards -->
+          <div class="col-md-4">
+            <div class="card p-3">
+              <h6>Total Customers</h6>
+              <h4 class="fw-bold">2,120</h4>
+              <p class="text-success">+20%</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3">
+              <h6>Members</h6>
+              <h4 class="fw-bold">1,220</h4>
+              <p class="text-success">+15%</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3">
+              <h6>Active Now</h6>
+              <h4 class="fw-bold">316</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="card p-4">
+              <h6>Deal Funnel</h6>
+              <div class="chart-container">
+                <canvas id="funnelChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-4">
+              <h6>Opportunity Stage</h6>
+              <div class="chart-container">
+                <canvas id="opportunityChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Funnel Chart
+    const funnelCtx = document.getElementById('funnelChart').getContext('2d');
+    new Chart(funnelCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Leads', 'Sales Calls', 'Follow-up', 'Conversion', 'Sale'],
+        datasets: [{
+          label: 'Deal Funnel',
+          data: [200, 100, 70, 20, 10],
+          backgroundColor: '#ffc107',
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+      }
+    });
+
+    // Opportunity Chart
+    const opportunityCtx = document.getElementById('opportunityChart').getContext('2d');
+    new Chart(opportunityCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Leads', 'Sales Calls', 'Follow-up', 'Conversion'],
+        datasets: [{
+          data: [72, 6, 4, 18],
+          backgroundColor: ['#ffc107', '#17a2b8', '#28a745', '#dc3545'],
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      }
+    });
+  </script>
+</body>
+</html>

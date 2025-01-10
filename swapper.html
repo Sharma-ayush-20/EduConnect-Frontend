@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider Component</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .slider {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(to right, #ffe5d9, #ffecd2);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .slide {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .slide-header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .slide-content {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .navigation {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    .nav-btn:hover {
+      color: #ff7a59;
+    }
+
+    .terms {
+      font-size: 12px;
+      color: #888;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slide active">
+    <div class="slide-header">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Ernst_%26_Young_logo_2019.svg" alt="EY Logo">
+      <span>Process Advisors</span>
+    </div>
+    <div class="slide-content">85% of the learners achieved their training objectives within 9 months of course completion*</div>
+    <div class="terms">*Subject to Terms and Conditions</div>
+  </div>
+  <div class="slide">
+    <div class="slide-header">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Ernst_%26_Young_logo_2019.svg" alt="EY Logo">
+      <span>Process Advisors</span>
+    </div>
+    <div class="slide-content">Another slide content goes here for demonstration purposes.</div>
+    <div class="terms">*Subject to Terms and Conditions</div>
+  </div>
+  <div class="navigation">
+    <button class="nav-btn" id="prev">&#8249;</button>
+    <button class="nav-btn" id="next">&#8250;</button>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
+  let currentSlide = 0;
+
+  function updateSlides() {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentSlide);
+    });
+  }
+
+  prevButton.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlides();
+  });
+
+  nextButton.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlides();
+  });
+</script>
+
+</body>
+</html>

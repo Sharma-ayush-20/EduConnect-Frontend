@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            background-color: #1c2d3f;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .sidebar a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+
+        .sidebar a.active,
+        .sidebar a:hover {
+            color: #fff;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+        }
+
+        .chart {
+            height: 200px;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-2 sidebar d-flex flex-column p-3">
+                <h4 class="mb-4">DEFLAB</h4>
+                <div class="d-flex align-items-center mb-4">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic me-2">
+                    <div>
+                        <strong>Esther Howard</strong>
+                        <p class="small text-muted">Pro</p>
+                    </div>
+                </div>
+                <a href="#" class="mb-2 active">Defi</a>
+                <a href="#" class="mb-2">Yields</a>
+                <a href="#" class="mb-2">Devices</a>
+                <a href="#" class="mb-2">Protocols</a>
+                <a href="#" class="mb-2">Settings</a>
+                <a href="#" class="mt-auto">Log out</a>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-10 p-4">
+                <h3>Welcome back, Esther!</h3>
+                <p>Take a look at the updated Defi overview.</p>
+                <div class="row g-3">
+                    <!-- Chart Card -->
+                    <div class="col-md-8">
+                        <div class="card p-3">
+                            <h5>TVL 2022</h5>
+                            <h3>$43.35B <span class="text-success">+13%</span></h3>
+                            <canvas class="chart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Summary Cards -->
+                    <div class="col-md-4">
+                        <div class="card p-3 mb-3">
+                            <h6>Change (24h)</h6>
+                            <h4 class="text-danger">-4.31%</h4>
+                        </div>
+                        <div class="card p-3">
+                            <h6>Maker Dominance</h6>
+                            <h4>15.62%</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-4">
+                    <!-- Pie Chart Card -->
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5>Top Protocols</h5>
+                            <canvas class="chart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Rankings Table -->
+                    <div class="col-md-8">
+                        <div class="card p-3">
+                            <h5>TVL Rankings</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Change</th>
+                                        <th>TVL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>MakerDAO</td>
+                                        <td>CDP</td>
+                                        <td class="text-success">+3.21%</td>
+                                        <td>$6.87B</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Convex</td>
+                                        <td>CDP</td>
+                                        <td class="text-success">+2.78%</td>
+                                        <td>$2.27B</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Instadapp</td>
+                                        <td>CDP</td>
+                                        <td class="text-danger">-0.42%</td>
+                                        <td>$1.08B</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
