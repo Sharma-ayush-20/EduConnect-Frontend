@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <style>
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+       
+
+        .wrapper {
+            display: flex;
+        }
+
+        .main {
+            min-height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            margin: auto;
+            padding: auto;
+            transition: all 0.35s ease-in-out;
+            background-color: #fafbfe;
+        }
+        #sidebar.expand .main{
+            margin: auto !important;
+            padding: auto !important;
+        }
+
+        #sidebar {
+            width: 70px;
+            min-width: 70px;
+            z-index: 1000;
+            transition: all .25s ease-in-out;
+            background-color: #0e2238;
+            display: flex;
+            flex-direction: column;
+            transition: width 0.5s ease-in-out;
+        }
+
+        #sidebar.expand {
+            width: 260px;
+            min-width: 260px;
+            transition: all .25s ease-in-out;
+
+        }
+
+        .toggle-btn {
+            background-color: transparent;
+            cursor: pointer;
+            border: 0;
+            padding: 1rem 1.5rem;
+        }
+
+        .toggle-btn i {
+            font-size: 1.5rem;
+            color: #FFF;
+        }
+
+        .sidebar-logo {
+            margin: auto 0;
+            transition-delay: 2s;
+        }
+
+        .sidebar-logo a {
+            color: #FFF;
+            font-size: 1.15rem;
+            font-weight: 600;
+            transition-delay: 4s;
+            transition: all .2s ease-out;
+        }
+
+        #sidebar:not(.expand) .sidebar-logo,
+        #sidebar:not(.expand) a.sidebar-link span {
+            display: none;
+        }
+
+        .sidebar-nav {
+            padding: 2rem 0;
+            flex: 1 1 auto;
+
+        }
+
+        a.sidebar-link {
+            padding: .625rem 1.625rem;
+            color: #FFF;
+            display: block;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-link i {
+            font-size: 1.1rem;
+            margin-right: .75rem;
+        }
+
+        a.sidebar-link:hover {
+            background-color: rgba(255, 255, 255, .075);
+            border-left: 3px solid #3b7ddd;
+        }
+
+        .sidebar-item {
+            position: relative;
+            transition: all .2s ease-out;
+        }
+
+        #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+            position: absolute;
+            top: 0;
+            left: 70px;
+            background-color: #0e2238;
+            padding: 0;
+            width: auto;
+            display: none;
+        }
+
+        #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+            display: block;
+            max-height: 15em;
+            width: auto;
+            opacity: 1;
+        }
+
+        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+            border: solid;
+            border-width: 0 .075rem .075rem 0;
+            content: "";
+            display: inline-block;
+            padding: 2px;
+            position: absolute;
+            right: 1.5rem;
+            top: 1.4rem;
+            transform: rotate(-135deg);
+            transition: all .5s ease-out;
+        }
+
+        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+            transform: rotate(45deg);
+            transition: all .2s ease-out;
+        }
+
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            transition: all .1s ease-out !important;
+        }
+
+        .main {
+            margin-left: 75px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main.collapsed {
+            margin-left: 263px;
+            transition: all 0.3s ease-in-out;
+            /* Adjusted margin when sidebar is expanded */
+        }
+        
+
+        /* navbar   */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .icon-container>div {
+            width: 40px;
+            /* Width of each icon container */
+            height: 40px;
+            /* Height of each icon container */
+            margin: 0 5px;
+            /* Spacing between icons */
+            border-radius: 5px;
+            /* Rounded corners */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            /* White icon color */
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 30%;
+            background-color: #f0c0cb;
+            /* Pink background color */
+            overflow: hidden;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .icon-container>div {
+                width: 30px;
+                height: 30px;
+            }
+
+            .profile-pic {
+                width: 30px;
+                height: 30px;
+            }
+            .main.collapsed {
+            margin-left: auto ;
+            padding-left: auto;
+            
+            /* Adjusted margin when sidebar is expanded */
+        }
+        #sidebar.expand {
+            width: 100%;
+            min-width: 100%;
+            transition: all .25s ease-in-out;
+
+        }
+       
+        }
+
+        /* Dashboard  */
+        .header-container {
+            background-color: #222;
+            /* Dark background */
+            color: #fff;
+            /* Light text color */
+            padding: 15px 0;
+            display: flex;
+        }
+
+        .header-item {
+            flex: 1;
+            /* Equal width for each item */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin: 0 5px;
+            /* Add spacing between items */
+        }
+
+        .header-item i {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .header-item p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-item {
+                width: 50%;
+                /* Adjust width for smaller screens */
+            }
+        }
+
+       
+
+        .profile-header {
+            background-color: #4c5dfc;
+            border-radius: 10px;
+        }
+
+        .card {
+            background-color: #cacaca;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .icon {
+            background-color: #ff5722;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge {
+            font-size: 0.9rem;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+        }
+
+        /* Navbar Brand Text */
+        .navbar-brand {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        /* Icon Button Style */
+        .icon-btn {
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            gap: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Responsive - Center Items on Small Screens */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+            
+        }
+
+        /* Navbar Container */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: rgba(12, 83, 6, 0.596);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Navbar Icons - Center Align */
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Responsive Fix */
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                
+            }
+
+            .navbar-nav {
+                width: 100%;
+                justify-content: center;
+                gap: 15px;
+                
+            }
+            #right-sidebar{
+                height:auto;
+            }
+            .nav-lists{
+            gap: inherit;
+        }
+        }
+
+        /* left side  */
+
+        /* Right Sidebar Styles */
+        #right-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            max-height: 80vh;
+            background-color: #0e2238;
+            color: #fff;
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            margin-top: 90px;
+            overflow-y: auto;
+
+            /*Scroll when content overflows */
+            transition: right 0.3s ease-in-out;
+        }
+        #right-sidebar::-webkit-scrollbar{
+            width: 1px;
+        }
+
+        #right-sidebar.open {
+            right: 0;
+        }
+
+        #right-sidebar .sidebar-header {
+            padding: 20px;
+            background-color: #07111b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #right-sidebar .sidebar-content {
+            padding: 20px;
+            
+        }
+
+        #right-sidebar .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* notification  */
+        .notification {
+            background-color: #1a4a7c;
+            color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+
+        .notification button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Styling for close button */
+        .notification button:hover {
+            color: #ddd;
+        }
+
+        /* Optional: Style for the container */
+        .notification-container {
+            min-height: 100px;
+            /* Limit the height of the notification container */
+            overflow-y: auto;
+            /* Make it scrollable */
+            padding-right: 10px;
+        }
+
+        /* message hai bhai yaha  */
+        .messagebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            max-height: 80vh;
+            overflow-y: auto;
+            background: #1a4a7c;
+            color: white;
+            transition: right 0.3s ease-in-out;
+            /* padding: 20px; */
+            margin-top: 100px;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .messagebar::-webkit-scrollbar{
+            width: 1px;
+        }
+        .message-title{
+            background-color: #07111b;
+            width: 100%;
+            padding: 20px;
+        }
+        .messagebar.active {
+            right: 0;
+        }
+        .toggle-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1c9c22;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .close-message {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding: 20px;
+        }
+        .message {
+            background: #555;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            position: relative;
+        }
+        .messages::-webkit-scrollbar{
+            width: 1px;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: red;
+            border: none;
+            color: white;
+            padding: 2px 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .nav-lists{
+            gap: 10px;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* main content hai bhai */
+        
+    .table-container {
+            background-color: #d5d5dc;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        .table {
+            color: #f8f8f8;
+            min-width: 800px; /* Ensure table has a minimum width */
+        }
+
+        .table thead {
+            background-color: #a4a4a4;
+            border-radius: 20px;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.3s;
+        }
+
+        .table tbody tr:hover {
+            background-color: #b0b0b0;
+            color: rgb(65, 65, 65);
+        }
+
+        /* Responsive Search and Actions */
+        .search-bar {
+            background-color: #33354d;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding-left: 20px;
+            width: 100%; /* Full width on smaller screens */
+            margin-bottom: 10px; /* Space between search and buttons */
+        }
+
+        .btn-custom {
+            background-color: #4e73df;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 15px;
+            margin-bottom: 10px; /* Space between buttons */
+        }
+
+        /* Responsive Layout Adjustments */
+        @media (max-width: 768px) {
+            .main {
+                margin-left: 70px; /* Adjust margin for collapsed sidebar */
+            }
+
+            .main.collapsed {
+                margin-left: 70px; /* Adjust margin for expanded sidebar */
+            }
+
+            .table-container {
+                padding: 10px; /* Reduce padding on smaller screens */
+            }
+
+            .table {
+                font-size: 14px; /* Reduce font size for better fit */
+            }
+
+            .search-bar {
+                width: 100%; /* Full width on smaller screens */
+            }
+
+            .btn-custom {
+                width: 100%; /* Full width buttons on smaller screens */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .table {
+                font-size: 12px; /* Further reduce font size for very small screens */
+            }
+
+            .table th,
+            .table td {
+                padding: 8px; /* Reduce padding for better fit */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <aside id="sidebar" class="expand">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class="lni lni-grid-alt"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#" id="educonnect">EduConnect</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#dashboard" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-layout"></i>
+                        <span>DashBoard</span>
+                    </a>
+                    <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="./sidebar.html" class="sidebar-link">Dashboard Light</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./sidebar.html" class="sidebar-link">Dashboard Dark</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./sidebar.html" class="sidebar-link">Finance</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#student" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-user"></i>
+                        <span>Student</span>
+                    </a>
+                    <ul id="student" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="./student.html" class="sidebar-link">Student</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./studentdetail.html" class="sidebar-link">Student Detail</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#teacher" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-user"></i>
+                        <span>Teacher</span>
+                    </a>
+                    <ul id="teacher" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="./teacherakademi.html" class="sidebar-link">Teacher</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="newteacherdetail.html" class="sidebar-link">Teacher Detail</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./basic (1) (2).html" class="sidebar-link">Add New Teacher</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Course</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#assignment" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-protection"></i>
+                        <span>Assignment</span>
+                    </a>
+                    <ul id="assignment" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-protection"></i>
+                        <span>Auth</span>
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                        <i class="lni lni-layout"></i>
+                        <span>Multi Level</span>
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                Two Links
+                            </a>
+                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 1</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-popup"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-cog"></i>
+                        <span>Help and Support</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="main left-con p-3 container-fluid collapsed">
+
+            <nav class="navbar navbar-expand-lg " style="border-radius: 20px;">
+                <div class="container-fluid">
+                    <a class="navbar-brand fw-bold text-light" href="#">Teacher</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse m-auto p-auto justify-content-end" id="navbarNav">
+                        <ul class="nav-lists list-group list-group-horizontal gap-auto justify-content-evenly align-items-center">
+                            <li class="nav-item">
+                                <a class="nav-link icon-btn" href="#"><i class="fas fa-search"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link icon-btn" href="#"><i class="fas fa-moon"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link icon-btn" href="#" onclick="toggleMessage()"><i
+                                        class="fas fa-comment"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link icon-btn" href="#" onclick="toggleRightSidebar()"><i
+                                        class="fas fa-bell"></i></a>
+                            </li>
+                            <div class="profile-pic">
+                                <img src="https://akademi.dexignlab.com/xhtml/images/user.jpg" alt="Profile Picture">
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- main content  -->
+
+            <!-- 1st section  -->
+
+
+            <main style="margin-top: 20px;">
+                <!-- Search and Actions -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                      <input type="text" class="search-bar py-2" placeholder="Search here...">
+                    </div>
+                    <div>
+                      <button class="btn btn-custom me-2">Newest</button>
+                      <button class="btn btn-custom">+ New Student</button>
+                    </div>
+                  </div>
+              
+                  <!-- Table -->
+                  <div class="table-container">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col"><input type="checkbox"></th>
+                          <th scope="col">Name</th>
+                          <th scope="col">ID</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Parent Name</th>
+                          <th scope="col">City</th>
+                          <th scope="col">Contact</th>
+                          <th scope="col">Grade</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Samantha William</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Mana William</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-warning">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Tony Soap</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>James Soap</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-primary">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <tr>
+                          <td><input type="checkbox"></td>
+                          <td>Karen Hope</td>
+                          <td>ID 123456789</td>
+                          <td>March 25, 2021</td>
+                          <td>Justin Hope</td>
+                          <td>Jakarta</td>
+                          <td>
+                            <i class="lni lni-phone action-icon me-2"></i>
+                            <i class="lni lni-envelope action-icon"></i>
+                          </td>
+                          <td><span class="badge badge-custom badge-danger">VII A</span></td>
+                          <td><i class="lni lni-more action-icon"></i></td>
+                        </tr>
+                        <!-- Repeat similar rows for more entries -->
+                      </tbody>
+                    </table>
+                  </div>
+            </main>
+
+
+
+
+
+
+
+        </div>
+        <!-- Right Sidebar -->
+        <aside id="right-sidebar">
+            <div class="sidebar-header position-sticky "  >
+                <h3>Notification</h3>
+                <button class="close-btn" onclick="toggleRightSidebar()">&times;</button>
+            </div>
+            <div class="sidebar-content">
+                <div class="notification-container">
+                    <!-- Notifications -->
+                    <div class="notification">
+                        <span>This is a notification</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, dolores molestiae? Eum perferendis, reprehenderit modi a expedita nostrum harum perspiciatis sequi ipsa quam? Itaque iusto, nisi nulla odio omnis excepturi?</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    <div class="notification">
+                        <span>You have a new message!</span>
+                        <button onclick="closeNotification(this)">X</button>
+                    </div>
+                    heelo
+                </div>
+
+            </div>
+        </aside>
+
+        <div class="messagebar" id="messagebar">
+            <div class=" px-1 d-flex justify-content-around message-title">
+                <h2>Messages</h2>
+                <button class="close-btn bg-transparent border-0 text-white" onclick="toggleMessage()">X</button>
+            </div>
+            <div class="messages" id="messages">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam pariatur id doloribus, iusto unde ab eveniet consequuntur voluptatum eligendi voluptate laudantium tempora qui facere! Placeat ut laboriosam velit voluptates repudiandae?
+            </div>
+   
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const hamBurger = document.querySelector(".toggle-btn");
+
+        hamBurger.addEventListener("click", function () {
+            document.querySelector("#sidebar").classList.toggle("expand");
+
+        });
+
+        const hamBurger1 = document.querySelector(".toggle-btn");
+
+        hamBurger1.addEventListener("click", function () {
+            const mainContent = document.querySelector(".main");
+            mainContent.classList.toggle("collapsed");
+        });
+
+        // Toggle Right Sidebar
+        function toggleRightSidebar() {
+            const rightSidebar = document.getElementById('right-sidebar');
+            rightSidebar.classList.toggle('open');
+        }
+
+        // Function to close notification
+        function closeNotification(button) {
+            const notification = button.closest('.notification');
+            notification.style.display = 'none';
+        }
+
+        // Auto-close notifications after 5 seconds
+        // setTimeout(() => {
+        //     const notifications = document.querySelectorAll('.notification');
+        //     notifications.forEach(notification => {
+        //         notification.style.display = 'none';
+        //     });
+        // }, 5000); // 5000 milliseconds = 5 seconds
+
+        // Function to close notification
+        function closeNotification(button) {
+            const notification = button.closest('.notification');
+            notification.style.display = 'none';
+        }
+
+        // Function to close sidebar
+        function closeSidebar() {
+            const sidebar = document.getElementById('right-sidebar');
+            sidebar.style.display = 'none';
+        }
+
+        //message
+        function toggleMessage() {
+            document.getElementById("messagebar").classList.toggle("active");
+        }
+        //message ke andar
+        
+    </script>
+</body>
+
+</html>

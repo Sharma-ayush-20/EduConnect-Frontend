@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card Layout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            border: none;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(116, 127, 253, 0.842);
+        }
+
+        .card-header {
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 991px) {
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .mobile-only {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: rgb(63, 63, 63);">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-2 d-flex align-items-center justify-content-center bg-light">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAOVBMVEX///8AAAB0dHTFxcVOTk60tLTQ0NA2Njbo6OjW1tZsbGyOjo5HR0fZ2dk6Ojq9vb3x8fEyMjJCQkJXkSitAAABS0lEQVR4nO3POVIcAQAEQS7BomuB/z+WCNqUM85G1KBMu42uuzsAAACAc3r9+XBivw4UPt6f2e9vX/h0rPDPgVnS36OFzze/ciMvCr8oLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOH8F4XXyzm9vR8tPLHvX/hxoPDy48yuBwoBAAD41yds5x8NNfoi2gAAAABJRU5ErkJggg==" alt="Ethical Hacking" class="img-fluid p-3">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <h5 class="card-title">Ethical Hacking Course – CEH v13 Certification</h5>
+                                <p class="card-text">Key Skills: Understanding application-level attack, Trojan and spyware, rule-based and brute attack, Google hacking techniques, traceroot analysis.</p>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <div class="details">
+                                            <p class="mb-0"><strong>40 Hrs</strong> Online Class</p>
+                                            <p class="mb-0"><strong>24 Hrs</strong> Videos</p>
+                                            <p class="mb-0"><strong>Career</strong> Service</p>
+                                            <p class="mb-0">Next Cohort: <strong>11th Jan 2025</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <button class="btn btn-primary btn-sm">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 mb-3">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-2 d-flex align-items-center justify-content-center bg-light">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAOVBMVEX///8AAAB0dHTFxcVOTk60tLTQ0NA2Njbo6OjW1tZsbGyOjo5HR0fZ2dk6Ojq9vb3x8fEyMjJCQkJXkSitAAABS0lEQVR4nO3POVIcAQAEQS7BomuB/z+WCNqUM85G1KBMu42uuzsAAACAc3r9+XBivw4UPt6f2e9vX/h0rPDPgVnS36OFzze/ciMvCr8oLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOEoLFM4CssUjsIyhaOwTOH8F4XXyzm9vR8tPLHvX/hxoPDy48yuBwoBAAD41yds5x8NNfoi2gAAAABJRU5ErkJggg==" alt="Cloud Computing" class="img-fluid p-3">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <h5 class="card-title">Executive Post Graduate Certification in Cloud Computing and DevOps</h5>
+                                <p class="card-text">Key Skills: AWS, Elastic Compute, Load Balancing, Autoscaling, DNS, VPC, CloudFormation, Access Management, Monitoring Services.</p>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <div class="details">
+                                            <p class="mb-0"><strong>9 Months</strong> Duration</p>
+                                            <p class="mb-0">Next Cohort: <strong>11th Jan 2025</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <button class="btn btn-primary btn-sm">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

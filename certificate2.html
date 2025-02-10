@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .certificate-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+            border: 10px solid #1c1c3c;
+            border-radius: 15px;
+            background: white;
+            position: relative;
+        }
+        .certificate-container h1 {
+            font-family: 'Georgia', serif;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .certificate-container h2 {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 42px;
+            font-weight: bold;
+        }
+        .certificate-container p {
+            font-family: 'Arial', sans-serif, cursive;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .signature {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .signature div {
+            text-align: center;
+        }
+        .download-btn {
+            position: absolute;
+            top: -40px;
+            right: 20px;
+            background: #54549f;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container" id="certificate">
+        <div class="download-btn" onclick="downloadPDF()">Download</div>
+        <h1>Certificate of Participation</h1>
+        <p>THIS IS TO CERTIFY THAT</p>
+        <h2>Amanda Smith</h2>
+        <p>demonstrated exceptional engagement and involvement during the Sci-Research Workshop,<br>
+            which took place from 02-04 April 2023, where she exhibited an enthusiastic and dedicated<br>
+            approach, actively participating for a total of 12 hours.</p>
+        <div class="signature">
+            <div>
+                <p>______________________</p>
+                <p><b>Dr. Abbie Robbins</b></p>
+                <p>Manager</p>
+            </div>
+            <div>
+                <img src="edulogo.jpg" alt="" width="250px">
+            </div>
+            <div>
+                <p>______________________</p>
+                <p><b>James Fraser</b></p>
+                <p>Director</p>
+            </div>
+        </div>
+        <p>Certificate ID: 46820385043 | Issuing Date: 02.02.2023</p>
+    </div>
+    <script>
+        function downloadPDF() {
+            const element = document.getElementById('certificate');
+            html2pdf().from(element).save('Certificate.pdf');
+        }
+    </script>
+</body>
+</html>

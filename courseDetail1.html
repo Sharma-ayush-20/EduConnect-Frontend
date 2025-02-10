@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Card Layout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
+  <style>
+
+.container {
+            max-width: 960px;
+            /* Adjust as needed */
+            margin: 0 auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-group {
+                flex-basis: 100%;
+                /* Make each group full width on smaller screens */
+            }
+        }
+        .card-text {
+            margin-bottom: 1rem;
+        }
+
+        .list-group-item {
+            padding: 0.5rem 0.5rem;
+            /* Adjust padding as needed */
+        }
+
+        .bi-check {
+            margin-right: 0.5rem;
+            /* Add some space between icon and text */
+            color: #1cb23f;
+            /* background-color: #1cb23f; */
+            /* Green color for the checkmark */
+        }
+    /* Custom styles for the card */
+    .custom-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .custom-card .card-header {
+      position: relative;
+    }
+
+    .video-thumbnail {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* Aspect ratio for 16:9 */
+      background: url('https://i.ytimg.com/vi_webp/vWfiyNDlzC4/mqdefault.webp') center center / cover no-repeat;
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: url('https://cdn01.alison-static.net/public/html/site/img/play-button.svg') center center / contain no-repeat;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .enrolled {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .ratings {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .ratings span {
+      font-size: 0.9rem;
+    }
+
+    .course-includes ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .course-includes ul li {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .course-includes ul li::before {
+      content: '✔';
+      color: green;
+      margin-right: 0.5rem;
+    }
+
+    .publisher {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .publisher img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    .sticky-card {
+      position: relative;
+      top: 20px;
+    }
+
+    /* view less  */
+  #courseContent.show-less li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* card  */
+
+    .card-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem;
+      scrollbar-width: thin;
+    }
+    .card-container::-webkit-scrollbar {
+      height: 8px;
+    }
+    .card-container::-webkit-scrollbar-thumb {
+      background-color: #555;
+      border-radius: 4px;
+    }
+    .card-container::-webkit-scrollbar-track {
+      background-color: #222;
+    }
+    .cardnew {
+      background-color: #222;
+      border: none;
+      min-width: 300px;
+      color: #ccc;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .cardnew img {
+      height: 150px;
+      object-fit: cover;
+    }
+    .cardnew .btn {
+      background-color: #198754;
+      color: #fff;
+      border: none;
+    }
+    .cardnew .btn:hover {
+      background-color: #157347;
+    }
+  </style>
+</head>
+<body>
+
+
+    <section class="mt-5 p-5" id="hire-job-hero-wrapper"
+    style="background-image: url(&quot;https://intellipaat.com/wp-content/themes/intellipaat/images/hire-jobs/hero-bg.png&quot;); max-height: fit-content;">
+
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-5 hire-job-hero-wrap text-white">
+                <h1>Hire Job Ready Professionals at <strong>No Cost!</strong></h1>
+                <p>Reduce your hiring time &amp; cost by 80%</p>
+                <hr>
+                <div>
+                    <a class="btn btn-warning px-5 py-3  fw-700" target="_blank"
+                        href="https://jobs.intellipaat.com/">Post a Job</a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 p-2">
+                <div>
+                    <h5 class="card-title text-white">Data Science Course</h5>
+                    <p class="card-text">
+                        <span class="text-primary">⭐ ⭐ ⭐ ⭐ ⭐</span> 96,559 Ratings
+                    </p>
+                    <p class="card-text text-white">Rated #1 Data Science Course by India TV</p>
+                    <ul class="text-white list-group-flush">
+                        <li class="list-group-item"><i class="bi bi-check"></i> Master Data Science courses: Python,
+                            SQL, ML, Power BI, NLP, Gen AI, & more</li>
+                        <li class="list-group-item"><i class="bi bi-check"></i> Live online Interactive sessions
+                            from IIT faculty & top industry experts</li>
+                        <li class="list-group-item"><i class="bi bi-check"></i> Guaranteed placement support with
+                            our career services</li>
+                        <li class="list-group-item"><i class="bi bi-check"></i> Earn prestigious data science
+                            certification from iHub DivyaSampark IIT Roorkee & Microsoft</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+  <div class="container-md my-4">
+    <div class="row">
+      <div class="col-md-4 sticky-card">
+        <div class="custom-card">
+          <div class="card-header">
+            <div class="video-thumbnail">
+              <div class="play-icon"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <h5 class="card-title">Diploma in Caregiving</h5>
+            <p class="enrolled">
+              <strong>759,431</strong> learners already enrolled
+            </p>
+            <div class="ratings">
+              <span>❤️ 7317</span>
+              <span>👍 1735</span>
+              <span>👎 Not Interested</span>
+            </div>
+            <div class="course-includes">
+              <h6>This Free Online Course Includes:</h6>
+              <ul>
+                <li>6-10 Hours of Learning</li>
+                <li>CPD Accreditation</li>
+                <li>Final Assessment</li>
+              </ul>
+            </div>
+            <a href="https://alison.com/topic/learn/69362/learning-outcomes" class="btn btn-success w-100 mt-3">Start Course Now</a>
+            <div class="publisher">
+              <img src="https://cdn01.alison-static.net/publishers/20161/f1.jpg" alt="Publisher">
+              <div>
+                <small class="d-block text-muted">COURSE PUBLISHER</small>
+                <strong>Advance Learning - Health, Nursing & Medical</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <!-- Extra content goes here -->
+       <h3 class="fw-bold">Diploma in Caregiving</h3>
+       <p class="fw-bold">Sharpen your caregiving skills in this free online course to provide professional care to clients or family members.</p>
+       <p class="fw-medium"> This course focuses on the practical, legal and ethical issues you face while providing care to the sick and elderly. We help you develop the skills required to become an effective caregiver, which involves assisting loved ones and clients with meals, personal care, transportation and other physical and emotional needs. We explain how to deal with dementia while managing the impact of age, disease and injury to bring comfort to those in need.</p>
+       <div class="container-fluid p-3 text-dark">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <img src="https://cdn01.alison-static.net/publishers/20161/f1.jpg" alt="Logo" width="50"> 
+          </div>
+          <div class="col">
+            <h6 class="mb-0">COURSE PUBLISHER</h6>
+            <p class="mb-0">Advance Learning - Health, Nursing & Medical</p>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-success">Start Course Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid p-3 bg-dark text-light">
+        <h4 class="mb-3">In This Free Course, You Will Learn How To</h4>
+        <div id="courseContent">
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle-fill text-success"></i> Outline the fundamental roles and responsibilities of a care worker</li>
+                <li><i class="bi bi-check-circle-fill text-success"></i> Describe the various legal issues that a caregiver must consider when working with a client</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle-fill text-success"></i> Describe how to identify, treat and prevent the spread of a range of medical conditions</li>
+                <li><i class="bi bi-check-circle-fill text-success"></i> Identify the correct actions to take in the event of various medical emergencies</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <button id="viewMoreBtn" class="btn btn-link text-decoration-none text-primary">View less</button>
+      </div>
+      
+      <div class="container py-5">
+        <ul class="nav nav-tabs" id="courseTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="modules-tab" data-bs-toggle="tab" data-bs-target="#modules" type="button" role="tab" aria-controls="modules" aria-selected="true">Course Modules</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="false">Course Description</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates" type="button" role="tab" aria-controls="certificates" aria-selected="false">Alison Certificates</button>
+          </li>
+        </ul>
+        <div class="tab-content mt-4" id="courseTabsContent">
+          <!-- Course Modules Tab -->
+          <div class="tab-pane fade show active" id="modules" role="tabpanel" aria-labelledby="modules-tab">
+            <div class="accordion" id="modulesAccordion">
+              <!-- Module 1 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="module1Heading">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#module1" aria-expanded="true" aria-controls="module1">
+                    MODULE 1: The Fundamentals of Caregiving
+                  </button>
+                </h2>
+                <div id="module1" class="accordion-collapse collapse show" aria-labelledby="module1Heading">
+                  <div class="accordion-body">
+                    <p>What are the fundamentals of caregiving? This module will guide you through the roles and responsibilities of a caregiver.</p>
+                    <ul>
+                      <li>1. Learning Outcomes <button class="btn btn-sm btn-start-course ms-3">Start Course Now</button></li>
+                      <li>2. The Roles & Responsibilities of Carers</li>
+                      <li>3. Legal & Ethical Issues in Caregiving</li>
+                      <li>4. Communications & the Caregiving Process</li>
+                      <li>5. Communicating with Individuals with Disabilities</li>
+                      <li>6. Lesson Summary</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- Module 2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="module2Heading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module2" aria-expanded="false" aria-controls="module2">
+                    MODULE 2: Fundamental Skills in Caregiving
+                  </button>
+                </h2>
+                <div id="module2" class="accordion-collapse collapse" aria-labelledby="module2Heading">
+                    <div class="accordion-body">
+                        <p>What are the fundamentals of caregiving? This module will guide you through the roles and responsibilities of a caregiver.</p>
+                        <ul>
+                          <li>1. Learning Outcomes <button class="btn btn-sm btn-start-course ms-3">Start Course Now</button></li>
+                          <li>2. The Roles & Responsibilities of Carers</li>
+                          <li>3. Legal & Ethical Issues in Caregiving</li>
+                          <li>4. Communications & the Caregiving Process</li>
+                          <li>5. Communicating with Individuals with Disabilities</li>
+                          <li>6. Lesson Summary</li>
+                        </ul>
+                      </div>
+                </div>
+              </div>
+              <!-- Module 3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="module3Heading">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#module3" aria-expanded="false" aria-controls="module3">
+                    MODULE 3: Infections, Nutrition & Food Safety
+                  </button>
+                </h2>
+                <div id="module3" class="accordion-collapse collapse" aria-labelledby="module3Heading">
+                  <div class="accordion-body">
+                    <p>Explore topics like fighting infection, food safety, and managing nutrition in caregiving.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Course Description Tab -->
+          <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
+            <h3>Diploma in Caregiving</h3>
+            <p>
+                This course begins by introducing you to the roles and responsibilities of caregivers. We study the legal and ethical issues involved in the caregiving process. You will also learn how to communicate with individuals with disabilities before covering stress management, body mechanics and organisational skills. This course also discusses the purpose of observing, reporting and documenting the condition of those in your care. We establish the importance of cultural awareness and cultural competency to create a respectful work environment. The course examines various ailments and illnesses you may encounter and describes their treatment and prevention.
+                <br><br>
+                The term 'dementia' refers to a spectrum of brain disorders of varying intensity that hamper thought and memory. This course examines dementia and Alzheimer's disease and trains you to cope with such conditions sensitively. We also show you how to work with patients' families. The course then studies how ageing affects the body, the emotional impact of disease and traumatic injuries and the steps involved in preparing for a patient's death.
+            </p>
+            <button class="btn btn-success btn-lg">Join Course Now</button>
+          </div>
+          <!-- Alison Certificates Tab -->
+          <div class="tab-pane fade" id="certificates" role="tabpanel" aria-labelledby="certificates-tab">
+            <div class="container-fluid p-3">
+                <div class="row">
+                  <div class="col-md-8">
+                    <p>All Alison courses are free to enrol, study and complete. To successfully complete this Diploma course and become an Alison Graduate, you need to achieve 80% or higher in each course assessment. Once you have completed this Diploma course, you have the option to acquire an official Diploma, which is a great way to share your achievement with the world.</p>
+              
+                    <h4>Your Alison Diploma is:</h4>
+                    <ul class="list-unstyled">
+                      <li><i class="bi bi-check-circle-fill text-success"></i> Ideal for sharing with potential employers</li>
+                      <li><i class="bi bi-check-circle-fill text-success"></i> Great for your CV, professional social media profiles and job applications.</li>
+                      <li><i class="bi bi-check-circle-fill text-success"></i> An indication of your commitment to continuously learn, upskill & achieve high results.</li>
+                      <li><i class="bi bi-check-circle-fill text-success"></i> An incentive for you to continue empowering yourself through lifelong learning.</li>
+                    </ul>
+              
+                    <p>Alison offers 3 types of Diplomas for completed Diploma courses:</p>
+                    <ul class="list-unstyled">
+                      <li><strong>Digital Diploma:</strong> a downloadable Diploma in PDF format immediately available to you when you complete your purchase.</li>
+                      <li><strong>Diploma:</strong> a physical version of your officially branded and security-marked Diploma</li>
+                      <li><strong>Framed Diploma:</strong> a physical version of your officially branded and security-marked Diploma in a stylish frame.</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-4 text-center">
+                    <img src="https://alison.com/html/site/img/course-landing-v2/diploma.png" alt="Diploma Sample" class="img-fluid"> 
+                    <button type="button" class="btn btn-primary mt-4">Start Course Now <i class="bi bi-arrow-right"></i></button> 
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-3 bg-dark text-light" style="border-radius: 20px;"> 
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <i class="bi bi-info-circle-fill text-primary"></i> 
+          </div>
+          <div class="col">
+            <h6 class="mb-0">Knowledge & Skills You Will Learn</h6>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-2 col-sm-3 mb-2">
+            <button type="button" class="btn btn-outline-primary btn-sm">Caregiving</button>
+          </div>
+          <div class="col-md-2 col-sm-3 mb-2">
+            <button type="button" class="btn btn-outline-primary btn-sm">Dementia</button>
+          </div>
+          <div class="col-md-3 col-sm-3 mb-2">
+            <button type="button" class="btn btn-outline-primary btn-sm">Care Worker Apprenticeships</button>
+          </div>
+          <div class="col-md-3 col-sm-3 mb-2">
+            <button type="button" class="btn btn-outline-primary btn-sm">Alzheimer's</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-2 mt-3" style="border-radius: 20px; background-color: rgb(216, 216, 216);">
+        <div class="row">
+          <div class="col-md-8">
+            <h4 class="mb-3">Complete This CPD Accredited Course & Get Your Diploma!</h4>
+            <div class="row mb-4"> 
+              <div class="row-md-4 mb-3">
+                <div class="card bg-dark text-white text-center p-3">
+                  <i class="bi bi-shield-check fs-3 mb-2"></i>
+                  <h5>Certify Your Skills</h5>
+                  <p class="mb-0">A CPD accredited Alison Diploma/Certificate certifies the skills you've learned.</p>
+                </div>
+              </div>
+              <div class="row-md-4 mb-3">
+                <div class="card bg-dark text-white text-center p-3">
+                  <i class="bi bi-chat-square-text fs-3 mb-2"></i>
+                  <h5>Stand Out From The Crowd</h5>
+                  <p class="mb-0">Add your Alison Certification to your resume and stay ahead of the competition.</p>
+                </div>
+              </div>
+              <div class="row-md-4 mb-3">
+                <div class="card bg-dark text-white text-center p-3">
+                  <i class="bi bi-briefcase-fill fs-3 mb-2"></i>
+                  <h5>Advance in Your Career</h5>
+                  <p class="mb-0">Share your Alison Certification with potential employers to show off your skills and capabilities.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <img src="https://alison.com/html/site/img/course-landing-v2/diploma.png" alt="Diploma Sample" class="img-fluid">
+            <button type="button" class="btn btn-primary mt-4">Start Course Now <i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid p-3 mt-3" style="border-radius: 20px; background-color: rgb(216, 216, 216);">
+        <h4 class="mb-3 text-center">Learner Reviews & Feedback For Diploma in Caregiving</h4>
+        <div class="row align-items-center mb-2">
+          <div class="col-auto">
+            <i class="bi bi-hand-thumbs-up-fill text-primary"></i> 7319
+          </div>
+          <div class="col-auto">
+            <i class="bi bi-hand-thumbs-down-fill text-danger"></i> 1736
+          </div>
+        </div>
+      
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <img src="https://alison.com/images/users/549490f17b04c5060c72b239320457707b135575f0f6427836714f72ab271939/26785072.jpg" alt="User 1" class="rounded-circle" width="40" height="40"> 
+              <div class="ms-3">
+                <h6 class="mb-0">Mohammad E. <span class="text-muted">Alison Graduate</span></h6>
+                <span class="text-primary"><i class="bi bi-hand-thumbs-up-fill"></i> loved this course</span>
+              </div>
+            </div>
+            <p class="card-text">glad to learn from alison, highly recommended</p>
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-sm btn-link text-light">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+              </button>
+              <button type="button" class="btn btn-sm btn-link text-light">
+                <i class="bi bi-hand-thumbs-down-fill"></i>
+              </button>
+              <button type="button" class="btn btn-sm btn-link text-light">Report</button>
+            </div>
+          </div>
+        </div>
+      
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <img src="user2_image.jpg" alt="User 2" class="rounded-circle" width="40" height="40">
+              <div class="ms-3">
+                <h6 class="mb-0">Anum N. <span class="text-muted">Alison Graduate</span></h6>
+                <span class="text-primary"><i class="bi bi-hand-thumbs-up-fill"></i> loved this course</span>
+              </div>
+            </div>
+            <p class="card-text">Good experience.</p>
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-sm btn-link text-light">
+                <i class="bi bi-hand-thumbs-up-fill"></i>
+              </button>
+              <button type="button" class="btn btn-sm btn-link text-light">
+                <i class="bi bi-hand-thumbs-down-fill"></i>
+              </button>
+              <button type="button" class="btn btn-sm btn-link text-light">Report</button>
+            </div>
+          </div>
+        </div>
+      
+        <button type="button" class="btn btn-link text-primary">View More Reviews</button>
+      </div>
+
+
+  <div class="container py-5">
+    <h3 class="mb-4">Scrollable Horizontal Cards</h3>
+    <div class="card-container">
+      <!-- Card 1 -->
+      <div class="cardnew">
+        <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Card Image 1">
+        <div class="card-body">
+          <h5 class="card-title">Card Title 1</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <button class="btn btn-sm">Learn More</button>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="cardnew">
+        <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Card Image 2">
+        <div class="card-body">
+          <h5 class="card-title">Card Title 2</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <button class="btn btn-sm">Learn More</button>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="cardnew">
+        <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Card Image 3">
+        <div class="card-body">
+          <h5 class="card-title">Card Title 3</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <button class="btn btn-sm">Learn More</button>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="cardnew">
+        <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Card Image 4">
+        <div class="card-body">
+          <h5 class="card-title">Card Title 4</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <button class="btn btn-sm">Learn More</button>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="cardnew">
+        <img src="https://via.placeholder.com/300x150" class="card-img-top" alt="Card Image 5">
+        <div class="card-body">
+          <h5 class="card-title">Card Title 5</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <button class="btn btn-sm">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+  const viewMoreBtn = document.getElementById('viewMoreBtn');
+  const courseContent = document.getElementById('courseContent');
+
+  viewMoreBtn.addEventListener('click', () => {
+    if (courseContent.classList.contains('show-less')) {
+      courseContent.classList.remove('show-less');
+      viewMoreBtn.textContent = "View less";
+    } else {
+      courseContent.classList.add('show-less');
+      viewMoreBtn.textContent = "View More";
+    }
+  });
+  </script>
+</body>
+</html>

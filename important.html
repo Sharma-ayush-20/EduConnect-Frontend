@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Course Layout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .course-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .profile-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .progress-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5>Start Course</h5>
+                <span>170/250</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 68%;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">68%</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <div class="course-card">
+                    <h5>Metastatic Breast Cancer 101</h5>
+                    <p class="text-muted">Learn about breast cancer treatment and challenges.</p>
+                    <div class="accordion" id="courseAccordion1">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    General info about breast cancer
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#courseAccordion1">
+                                <div class="accordion-body">
+                                    Detailed information about breast cancer.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Stages of cancer metastasizing
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#courseAccordion1">
+                                <div class="accordion-body">
+                                    Information on the stages of cancer metastasizing.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Multi-drug therapies
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#courseAccordion1">
+                                <div class="accordion-body">
+                                    Details about multi-drug therapies used in treatment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Technologies
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#courseAccordion1">
+                                <div class="accordion-body">
+                                    Overview of technologies used in cancer treatment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Symptoms of various stages
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#courseAccordion1">
+                                <div class="accordion-body">
+                                    Symptoms associated with different stages of cancer.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <h5>Metastatic Breast Cancer 101</h5>
+                    <p class="text-muted">Learn about breast cancer treatment and challenges.</p>
+                    <div class="accordion" id="courseAccordion2">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne2">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                                    General info about breast cancer
+                                </button>
+                            </h2>
+                            <div id="collapseOne2" class="accordion-collapse collapse show" aria-labelledby="headingOne2" data-bs-parent="#courseAccordion2">
+                                <div class="accordion-body">
+                                    Detailed information about breast cancer.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                                    Stages of cancer metastasizing
+                                </button>
+                            </h2>
+                            <div id="collapseTwo2" class="accordion-collapse collapse" aria-labelledby="headingTwo2" data-bs-parent="#courseAccordion2">
+                                <div class="accordion-body">
+                                    Information on the stages of cancer metastasizing.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                                    Multi-drug therapies
+                                </button>
+                            </h2>
+                            <div id="collapseThree2" class="accordion-collapse collapse" aria-labelledby="headingThree2" data-bs-parent="#courseAccordion2">
+                                <div class="accordion-body">
+                                    Details about multi-drug therapies used in treatment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
+                                    Technologies
+                                </button>
+                            </h2>
+                            <div id="collapseFour2" class="accordion-collapse collapse" aria-labelledby="headingFour2" data-bs-parent="#courseAccordion2">
+                                <div class="accordion-body">
+                                    Overview of technologies used in cancer treatment.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive2" aria-expanded="false" aria-controls="collapseFive2">
+                                    Symptoms of various stages
+                                </button>
+                            </h2>
+                            <div id="collapseFive2" class="accordion-collapse collapse" aria-labelledby="headingFive2" data-bs-parent="#courseAccordion2">
+                                <div class="accordion-body">
+                                    Symptoms associated with different stages of cancer.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="col-lg-4">
+                <div class="course-card mb-3">
+                    <h6>Course Info</h6>
+                    <ul class="list-unstyled">
+                        <li>5 lessons</li>
+                        <li>Duration: 4 hrs</li>
+                        <li>Assignments: 2</li>
+                        <li>Exam: Yes</li>
+                    </ul>
+                </div>
+                <div class="profile-card">
+                    <img src="data:image/png;base64,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" alt="Prof. William Neill" class="rounded-circle mb-3">
+                    <h6>Prof. William Neill</h6>
+                    <p class="text-muted">Expert in cancer research with over 20 years of experience.</p>
+                    <a href="#" class="btn btn-primary btn-sm">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar With Bootstrap</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <style>
+        ::after,
+        ::before {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .wrapper {
+            display: flex;
+        }
+
+        .main {
+            min-height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            transition: all 0.35s ease-in-out;
+            background-color: #fafbfe;
+        }
+
+        #sidebar {
+            width: 70px;
+            min-width: 70px;
+            z-index: 1000;
+            transition: all .25s ease-in-out;
+            background-color: #0e2238;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sidebar.expand {
+            width: 260px;
+            min-width: 260px;
+        }
+
+        .toggle-btn {
+            background-color: transparent;
+            cursor: pointer;
+            border: 0;
+            padding: 1rem 1.5rem;
+        }
+
+        .toggle-btn i {
+            font-size: 1.5rem;
+            color: #FFF;
+        }
+
+        .sidebar-logo {
+            margin: auto 0;
+        }
+
+        .sidebar-logo a {
+            color: #FFF;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        #sidebar:not(.expand) .sidebar-logo,
+        #sidebar:not(.expand) a.sidebar-link span {
+            display: none;
+        }
+
+        .sidebar-nav {
+            padding: 2rem 0;
+            flex: 1 1 auto;
+        }
+
+        a.sidebar-link {
+            padding: .625rem 1.625rem;
+            color: #FFF;
+            display: block;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-link i {
+            font-size: 1.1rem;
+            margin-right: .75rem;
+        }
+
+        a.sidebar-link:hover {
+            background-color: rgba(255, 255, 255, .075);
+            border-left: 3px solid #3b7ddd;
+        }
+
+        .sidebar-item {
+            position: relative;
+        }
+
+        #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+            position: absolute;
+            top: 0;
+            left: 70px;
+            background-color: #0e2238;
+            padding: 0;
+            width: auto;
+            display: none;
+        }
+
+        #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+            display: block;
+            max-height: 15em;
+            width: 100%;
+            opacity: 1;
+        }
+
+        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+            border: solid;
+            border-width: 0 .075rem .075rem 0;
+            content: "";
+            display: inline-block;
+            padding: 2px;
+            position: absolute;
+            right: 1.5rem;
+            top: 1.4rem;
+            transform: rotate(-135deg);
+            transition: all .2s ease-out;
+        }
+
+        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+            transform: rotate(45deg);
+            transition: all .2s ease-out;
+        }
+
+        #sidebar {
+            /* ... other styles ... */
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+        }
+
+        .main {
+            margin-left: 75px;
+            /* Default margin */
+            transition: margin-left 0.3s ease;
+            /* Smooth transition for margin change */
+        }
+
+        .main.collapsed {
+            margin-left: 265px;
+            /* Adjusted margin when sidebar is expanded */
+        }
+
+        /* navbar   */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            /* Center icons horizontally */
+            align-items: center;
+            /* Center icons vertically */
+            background-color: #333;
+            /* Dark background color */
+            padding: 10px;
+            /* Spacing around icons */
+        }
+
+        .icon-container>div {
+            width: 40px;
+            /* Width of each icon container */
+            height: 40px;
+            /* Height of each icon container */
+            margin: 0 5px;
+            /* Spacing between icons */
+            border-radius: 5px;
+            /* Rounded corners */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            /* White icon color */
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0c0cb;
+            /* Pink background color */
+            overflow: hidden;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .icon-container>div {
+                width: 30px;
+                height: 30px;
+            }
+
+            .profile-pic {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        /* Dashboard  */
+        .header-container {
+            background-color: #222;
+            /* Dark background */
+            color: #fff;
+            /* Light text color */
+            padding: 15px 0;
+            /* Top and bottom padding */
+            display: flex;
+            /* Use flexbox for better layout */
+        }
+
+        .header-item {
+            flex: 1;
+            /* Equal width for each item */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin: 0 5px;
+            /* Add spacing between items */
+        }
+
+        .header-item i {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .header-item p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-item {
+                width: 50%;
+                /* Adjust width for smaller screens */
+            }
+        }
+
+        /* main content  */
+
+        /* 2nd section  */
+        .card {
+            background-color: #2a2a3c;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .chart-container {
+            padding: 20px;
+        }
+
+        /* 3rd section  */
+        .container {
+            max-width: 960px;
+            /* Adjust max width as needed */
+        }
+
+        .calendar-container {
+            background-color: #333;
+            /* Dark background for calendar */
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header button {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            /* 7 columns for days */
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #555;
+        }
+
+        .calendar-day.today {
+            background-color: #f00;
+            /* Highlight today's date */
+        }
+
+        .teacher-details {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-left: 20px;
+            /* Space between calendar and details */
+            overflow-x: scroll;
+            /* Enable vertical scrolling for teacher details */
+        }
+
+        .teacher-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+            /* Enable horizontal scrolling for responsive tables */
+        }
+
+        .teacher-table th,
+        .teacher-table td {
+            border: 1px solid #555;
+            padding: 10px;
+            white-space: nowrap;
+            /* Prevent text wrapping */
+        }
+
+        .teacher-table th {
+            background-color: #444;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+            /* Center pagination buttons */
+        }
+
+        @media (max-width: 768px) {
+
+            /* Adjust breakpoint as needed */
+            .row {
+                flex-direction: column-reverse;
+                /* Reverse the order of columns */
+            }
+
+            .teacher-details {
+                margin-left: 0;
+                /* Remove margin-left for smaller screens */
+                margin-bottom: 20px;
+                /* Add margin-bottom for spacing */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class="lni lni-grid-alt"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">EduConnect</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#dashboard" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-layout"></i>
+                        <span>DashBoard</span>
+                    </a>
+                    <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="./sidebar.html" class="sidebar-link">Dashboard Light</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./sidebar.html" class="sidebar-link">Dashboard Dark</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./sidebar.html" class="sidebar-link">Finance</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#student" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-user"></i>
+                        <span>Student</span>
+                    </a>
+                    <ul id="student" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="./student.html" class="sidebar-link">Student</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./studentdetail.html" class="sidebar-link">Student Detail</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#teacher" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-user"></i>
+                        <span>Teacher</span>
+                    </a>
+                    <ul id="teacher" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="./teacherakademi.html" class="sidebar-link">Teacher</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./teacherdetail.html" class="sidebar-link">Teacher Detail</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="./addnewteacher.html" class="sidebar-link">Add New Teacher</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>Course</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#assignment" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-protection"></i>
+                        <span>Assignment</span>
+                    </a>
+                    <ul id="assignment" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-protection"></i>
+                        <span>Auth</span>
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                        <i class="lni lni-layout"></i>
+                        <span>Multi Level</span>
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                Two Links
+                            </a>
+                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 1</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-popup"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-cog"></i>
+                        <span>Help and Support</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+        <div class="main left-con p-3 container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3" style="cursor: pointer; z-index: 999; position: fixed; width:92%;">
+                <span class="navbar-brand">Dashboard</span>
+                <div class="container-fluid d-flex justify-content-end">
+
+                    <div class="icon-container">
+                        <div><i class="fas fa-search"></i></div>
+                        <div><i class="fas fa-moon"></i></div>
+                        <div><i class="fas fa-expand"></i></div>
+                        <div><i class="fas fa-comment"></i></div>
+                        <div><i class="fas fa-bell"></i></div>
+                        <div><i class="fas fa-cog"></i></div>
+                        <div class="profile-pic">
+                            <img src="https://akademi.dexignlab.com/xhtml/images/user.jpg" alt="Profile Picture">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- main content  -->
+
+            <!-- 1st section  -->
+            <div class="container-fluid p-3" style="border-radius: 10px; margin-top: 80px;">
+                <div class="row no-gutters bg-dark text-light">
+                    <div class="col-md-3 col-sm-6 p-3 text-center">
+                        <span class="py-2 bg-primary px-3 rounded-circle" style="font-size: 1.5rem;">
+                            <i class="fas fa-user fa-1"></i>
+                        </span>
+                        <h5 class="mt-3 fw-bold">Students</h5>
+                        <h2 class="display-7 fw-bold">932</h2>
+                    </div>
+                    <div class="col-md-3 col-sm-6 p-3 text-center">
+                        <span class="py-2 bg-danger px-3 rounded-circle" style="font-size: 1.5rem;">
+                            <i class="fas fa-chalkboard-teacher fa-1"></i>
+                        </span>
+                        <h5 class="mt-3 fw-bold">Teachers</h5>
+                        <h2 class="display-7 fw-bold">754</h2>
+                    </div>
+                    <div class="col-md-3 col-sm-6 p-3 text-center">
+                        <span class="py-2 bg-success px-3 rounded-circle" style="font-size: 1.5rem;">
+                            <i class="fas fa-calendar-alt fa-1"></i>
+                        </span>
+                        <h5 class="mt-3 fw-bold">Events</h5>
+                        <h2 class="display-7 fw-bold">40</h2>
+                    </div>
+                    <div class="col-md-3 col-sm-6 p-3 text-center">
+                        <span class="py-2 bg-warning px-3 rounded-circle" style="font-size: 1.5rem;">
+                            <i class="fas fa-utensils fa-1"></i>
+                        </span>
+                        <h5 class="mt-3 fw-bold">Foods</h5>
+                        <h2 class="display-7 fw-bold">32k</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2nd section  -->
+            <div class="container-fluid my-2" style="color: #fff;">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">School Performance</h5>
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">School Overview</h5>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-sm btn-outline-light">Week</button>
+                                    <button class="btn btn-sm btn-outline-light">Month</button>
+                                    <button class="btn btn-sm btn-outline-light">Year</button>
+                                    <button class="btn btn-sm btn-outline-light">All</button>
+                                </div>
+                                <canvas id="overviewChart" class="mt-2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3rd section  -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button>&lt;</button>
+                                <h3>January 2025</h3>
+                                <button>&gt;</button>
+                            </div>
+                            <div class="calendar-body">
+                                <div class="calendar-day">Su</div>
+                                <div class="calendar-day">Mo</div>
+                                <div class="calendar-day">Tu</div>
+                                <div class="calendar-day">We</div>
+                                <div class="calendar-day">Th</div>
+                                <div class="calendar-day">Fr</div>
+                                <div class="calendar-day">Sa</div>
+                                <div class="calendar-day">29</div>
+                                <div class="calendar-day">30</div>
+                                <div class="calendar-day">31</div>
+                                <div class="calendar-day">1</div>
+                                <div class="calendar-day">2</div>
+                                <div class="calendar-day">3</div>
+                                <div class="calendar-day">4</div>
+                                <div class="calendar-day">5</div>
+                                <div class="calendar-day">6</div>
+                                <div class="calendar-day">7</div>
+                                <div class="calendar-day">8</div>
+                                <div class="calendar-day">9</div>
+                                <div class="calendar-day">10</div>
+                                <div class="calendar-day">11</div>
+                                <div class="calendar-day">12</div>
+                                <div class="calendar-day">13</div>
+                                <div class="calendar-day">14</div>
+                                <div class="calendar-day">15</div>
+                                <div class="calendar-day today">16</div>
+                                <div class="calendar-day">17</div>
+                                <div class="calendar-day">18</div>
+                                <div class="calendar-day">19</div>
+                                <div class="calendar-day">20</div>
+                                <div class="calendar-day">21</div>
+                                <div class="calendar-day">22</div>
+                                <div class="calendar-day">23</div>
+                                <div class="calendar-day">24</div>
+                                <div class="calendar-day">25</div>
+                                <div class="calendar-day">26</div>
+                                <div class="calendar-day">27</div>
+                                <div class="calendar-day">28</div>
+                                <div class="calendar-day">29</div>
+                                <div class="calendar-day">30</div>
+                                <div class="calendar-day">31</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-2">
+                        <div class="teacher-details">
+                            <h3>Teacher Details</h3>
+                            <table class="teacher-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Subject</th>
+                                        <th>Qualification</th>
+                                        <th>Fees</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Hanu</td>
+                                        <td>Programming</td>
+                                        <td>B.Tech</td>
+                                        <td>$ 217.70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hardy</td>
+                                        <td>Basic Algorithm</td>
+                                        <td>B.E</td>
+                                        <td>$ 17.70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Harry</td>
+                                        <td>English</td>
+                                        <td>B.Tech</td>
+                                        <td>$ 219.70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Harry john</td>
+                                        <td>History</td>
+                                        <td>B.Tech</td>
+                                        <td>$ 18.70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jack Xarma</td>
+                                        <td>Programming</td>
+                                        <td>B.Tech</td>
+                                        <td>$ 192.70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>James</td>
+                                        <td>History</td>
+                                        <td>B.Com</td>
+                                        <td>$ 21.70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>James Brown</td>
+                                        <td>History</td>
+                                        <td>B.Com</td>
+                                        <td>$ 15.70</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Janny</td>
+                                        <td>Basic Algorithm</td>
+                                        <td>B.Tech</td>
+                                        <td>$ 21.70</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button>&lt;</button>
+                                <button class="active">1</button>
+                                <button>2</button>
+                                <button>&gt;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const hamBurger = document.querySelector(".toggle-btn");
+
+        hamBurger.addEventListener("click", function () {
+            document.querySelector("#sidebar").classList.toggle("expand");
+        });
+
+        const hamBurger1 = document.querySelector(".toggle-btn");
+
+        hamBurger1.addEventListener("click", function () {
+            const mainContent = document.querySelector(".main");
+            mainContent.classList.toggle("collapsed");
+        });
+
+        // 2nd section 
+        // Performance Chart
+        const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(performanceCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 01', 'Week 02', 'Week 03', 'Week 04', 'Week 05', 'Week 06'],
+                datasets: [
+                    {
+                        label: 'This Week',
+                        data: [200000, 300000, 400000, 350000, 450000, 480000],
+                        borderColor: '#4e73df',
+                        backgroundColor: 'rgba(78, 115, 223, 0.1)',
+                        tension: 0.4,
+                    },
+                    {
+                        label: 'Last Week',
+                        data: [250000, 320000, 360000, 450000, 420000, 380000],
+                        borderColor: '#e74a3b',
+                        backgroundColor: 'rgba(231, 74, 59, 0.1)',
+                        tension: 0.4,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff',
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#fff',
+                        },
+                    },
+                    y: {
+                        ticks: {
+                            color: '#fff',
+                        },
+                    },
+                },
+            },
+        });
+
+        // Overview Chart
+        const overviewCtx = document.getElementById('overviewChart').getContext('2d');
+        new Chart(overviewCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Number of Projects',
+                        data: [50, 60, 70, 80, 90, 100, 70, 60, 80, 90, 100, 110],
+                        backgroundColor: '#4e73df',
+                    },
+                    {
+                        label: 'Revenue',
+                        data: [40, 50, 60, 70, 60, 50, 40, 50, 60, 70, 80, 90],
+                        type: 'line',
+                        borderColor: '#1cc88a',
+                        tension: 0.4,
+                    },
+                    {
+                        label: 'Active Projects',
+                        data: [30, 40, 50, 60, 50, 40, 30, 40, 50, 60, 70, 80],
+                        type: 'line',
+                        borderColor: '#e74a3b',
+                        tension: 0.4,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff',
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#fff',
+                        },
+                    },
+                    y: {
+                        ticks: {
+                            color: '#fff',
+                        },
+                    },
+                },
+            },
+        });
+
+    </script>
+</body>
+
+</html>

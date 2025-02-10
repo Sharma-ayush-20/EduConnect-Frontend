@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Section....</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+        .card-custom {
+            background-color: #1d2b4f;
+            color: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .card-header {
+            background-color: #0d1733;
+            padding: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .btn-enroll {
+            background-color: #8bc34a;
+            border: none;
+            color: #000;
+        }
+        .btn-enroll:hover {
+            background-color: #7cb342;
+        }
+        .btn-syllabus {
+            border: 1px solid #0d6efd;
+            color: #0d6efd;
+        }
+        .btn-syllabus:hover {
+            background-color: #0d6efd;
+            color: #ffffff;
+        }
+        .card-footer {
+            background-color: #141e3c;
+            padding: 15px;
+        }
+        .stars {
+            color: #ffc107;
+        }
+        @media (max-width: 768px) {
+            .card-body img {
+                width: 100%;
+            }
+        }
+
+    /* section 2 */
+    .program-header {
+            background-color: #002366;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .program-header h2 {
+            margin-bottom: 10px;
+        }
+        .program-header p {
+            margin: 0;
+        }
+        .navigation-buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .navigation-buttons button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            background: transparent;
+        }
+        .navigation-buttons button:hover {
+            background: #ffffff;
+            color: #000;
+        }
+        .lesson-card {
+            background-color: #1c1c1c;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            height: 100%;
+        }
+        .lesson-card h5 {
+            margin-bottom: 10px;
+        }
+        .lesson-card p {
+            color: #bbbbbb;
+        }
+        .lesson-card a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+        .lesson-card a:hover {
+            text-decoration: underline;
+        }
+        .card-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* section 4 */
+       
+        /* special  */
+        .taught-by-best {
+            background-color: #18191A; /* Dark background color */
+            padding: 50px 0;
+        }
+
+        .taught-by-best h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .instructor-card {
+            background-color: #202122; /* Slightly lighter shade for cards */
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .instructor-card img {
+            width: 150px; /* Adjust image size as needed */
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .instructor-name {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .instructor-title {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .instructor-bio {
+            color: #ccc;
+            font-size: 0.8rem;
+            max-height: 100px; /* Limit height of bio for better responsiveness */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Responsive adjustments for larger screens */
+        @media (min-width: 768px) {
+            .instructor-card {
+                margin-bottom: 40px; /* Increase bottom margin on larger screens */
+            }
+        }
+
+        @media (min-width: 992px) {
+            .instructor-card {
+                margin-bottom: 50px; /* Further increase margin on larger screens */
+            }
+        }
+        </style>
+</head>
+
+<body>
+
+    <div class=" py-5">
+        <div class="card card-custom">
+            <div class="card-header">Generative AI <span class="badge bg-primary">Nanodegree Program</span></div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h5 class="mb-3"><span class="stars">★★★★★</span> (8)</h5>
+                        <p class="">
+                            Embark on a transformative journey into Generative AI! We'll start by diving into the essentials
+                            with an introductory course, progress to mastering text generation with Large Language Models, unravel
+                            the complexities of image creation in computer vision, and cap it off by bringing AI to...
+                        </p>
+                        <a href="#" class="text-info">Read More</a>
+                        <div class="mt-4">
+                            <button class="btn btn-enroll me-2 p-2">Enroll Now →</button>
+                            <button class="btn btn-syllabus p-2">Download Syllabus</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center mt-2">
+                        <img src="https://video.udacity-data.com/topher/2024/October/670987bf_nd608/nd608.jpg" alt="Generative AI" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="badge bg-light text-dark">Intermediate</span>
+                    <span class="mx-3">•</span>
+                    <span>2 months</span>
+                </div>
+                <div>Last Updated January 6, 2025</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-2" style="color: #fff;
+       border-radius: 20px;">
+        <h1 class="mb-4 text-dark">Courses In This Program</h1>
+    
+        <div class="program-header text-white">
+            <p class="mb-1">Course 1 &bull; 45 minutes</p>
+            <h2>Welcome to the Nanodegree Program!</h2>
+            <p>Welcome to Udacity! We're excited to share more about your Nanodegree program and start this journey with you!</p>
+        </div>
+    
+        <div class="navigation-buttons d-flex justify-content-center">
+            <button class="me-3 bg-black">&#8592;</button>
+            <button class="bg-black">&#8594;</button>
+        </div>
+    
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="lesson-card">
+                    <h5>Lesson 1</h5>
+                    <h6>Welcome!</h6>
+                    <p>Welcome to Udacity. Takes 5 minutes to get familiar with Udacity courses and gain some tips to succeed in courses.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="lesson-card">
+                    <h5>Lesson 2</h5>
+                    <h6>Getting Help</h6>
+                    <p>You are starting a challenging but rewarding journey! Take 5 minutes to read how to get help with projects and...
+                        <a href="#">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="container py-3" style="
+    color: #ffffff; border-radius: 20px;">
+
+    <div class="program-header text-white">
+        <p class="mb-1">Course 1 &bull; 45 minutes</p>
+        <h2>Building Generative AI Solutions</h2>
+        <p>Welcome to Udacity! We're excited to share more about your Nanodegree program and start this journey with you!</p>
+    </div>
+
+    <div class="navigation-buttons d-flex justify-content-center">
+        <button class="me-3 bg-black">&#8592;</button>
+        <button class="bg-black">&#8594;</button>
+    </div>
+
+    <div class="card-container">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="lesson-card">
+                    <h5>Lesson 1</h5>
+                    <h6>Welcome!</h6>
+                    <p>Welcome to Udacity. Takes 5 minutes to get familiar with Udacity courses and gain some tips to succeed in courses.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="lesson-card">
+                    <h5>Lesson 2</h5>
+                    <h6>Getting Help</h6>
+                    <p>You are starting a challenging but rewarding journey! Take 5 minutes to read how to get help with projects and...
+                        <a href="#">Read More</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="lesson-card">
+                    <h5>Lesson 2</h5>
+                    <h6>Getting Help</h6>
+                    <p>You are starting a challenging but rewarding journey! Take 5 minutes to read how to get help with projects and...
+                        <a href="#">Read More</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="lesson-card">
+                    <h5>Lesson 2</h5>
+                    <h6>Getting Help</h6>
+                    <p>You are starting a challenging but rewarding journey! Take 5 minutes to read how to get help with projects and...
+                        <a href="#">Read More</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Additional cards can be added here -->
+        </div>
+    </div>
+</div>
+
+
+<section class="taught-by-best">
+    <div class="container">
+        <h2>Taught By The Best</h2>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5"> 
+            <div class="col">
+                <div class="instructor-card">
+                    <img src="https://cdn.sanity.io/images/tlr8oxjg/production/c898c070c013a5b5ee2f165cbadc44dacfba6b74-2692x2692.jpg?w=64&q=100&fit=clip&auto=format" alt="Brian Cruz"> 
+                    <h4 class="instructor-name">Brian Cruz</h4>
+                    <p class="instructor-title">Head of AI Engineering</p>
+                    <p class="instructor-bio">Brian Cruz leads AI Engineering at Advocate, where Generative AI is used to help disabled individuals apply for benefits. He previously worked at Samba TV, contributing significantly to advancements in AI for edge devices, as well as at Salesforce, where he led ML engineering for sales revenue forecasting.</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="instructor-card">
+                    <img src="https://cdn.sanity.io/images/tlr8oxjg/production/c898c070c013a5b5ee2f165cbadc44dacfba6b74-2692x2692.jpg?w=64&q=100&fit=clip&auto=format" alt="Emily McMilin"> 
+                    <h4 class="instructor-name">Emily McMilin</h4>
+                    <p class="instructor-title">Research Scientist</p>
+                    <p class="instructor-bio">Emily McMilin is a Senior Research Scientist and Independent Researcher working at the intersection of NLP and Causal Inference. She obtained her Ph.D. in Electrical Engineering from Stanford University and prior to that an M.Sc. from University of Victoria, and a B.Sc. from Stanford in Symbolic Systems.</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="instructor-card">
+                    <img src="https://cdn.sanity.io/images/tlr8oxjg/production/c898c070c013a5b5ee2f165cbadc44dacfba6b74-2692x2692.jpg?w=64&q=100&fit=clip&auto=format" alt="Victor Geislinger"> 
+                    <h4 class="instructor-name">Victor Geislinger</h4>
+                    <p class="instructor-title">Machine Learning Engineer</p>
+                    <p class="instructor-bio">Victor Geislinger is a machine learning engineer and is dedicated to sharing his knowledge with others. Victor recently joined Google as a software engineer focused on AI/ML, but has been programming and educating others for over a decade.</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="instructor-card">
+                    <img src="https://cdn.sanity.io/images/tlr8oxjg/production/c898c070c013a5b5ee2f165cbadc44dacfba6b74-2692x2692.jpg?w=64&q=100&fit=clip&auto=format" alt="Jason Lin"> 
+                    <h4 class="instructor-name">Jason Lin</h4>
+                    <p class="instructor-title">Chief Scientist, Baidu AI</p>
+                    <p class="instructor-bio">Jason Lin has developed deep learning algorithms and AI applications at Lyft, self-driving, Spotify and Google DeepMind. Formerly a Stanford Online and UN keynote speaker, he's earned a M.S. in Machine Learning from Georgia Tech and coauthored NLP and computer vision papers with MIT.</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="instructor-card">
+                    <img src="https://cdn.sanity.io/images/tlr8oxjg/production/c898c070c013a5b5ee2f165cbadc44dacfba6b74-2692x2692.jpg?w=64&q=100&fit=clip&auto=format" alt="Erick Galinkin"> 
+                    <h4 class="instructor-name">Erick Galinkin</h4>
+                    <p class="instructor-title">Principal AI Researcher</p>
+                    <p class="instructor-bio">Erick Galinkin is a hacker and computer scientist, leading research at the intersection of security and artificial intelligence at Rapid7. He has spoken at numerous industry and academic conferences on topics ranging from malware development to game theory in security.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
+</body>
+
+</html>

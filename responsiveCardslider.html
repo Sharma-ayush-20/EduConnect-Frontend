@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Multi-Section Slider</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .slider-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-list {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card-item {
+      height: auto;
+      user-select: none;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      backdrop-filter: blur(30px);
+      background: #ffffff33;
+      border: 1px solid #ffffff80;
+      margin-right: 20px;
+      width: 300px;
+    }
+
+    .card-item:last-child {
+      margin-right: 0;
+    }
+
+    .card-item .user-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #fe0457;
+      padding: 4px;
+    }
+
+    .card-item .user-name {
+      font-size: 20px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .card-item .user-profession {
+      font-size: 14px;
+      color: #777;
+      margin: 10px 0;
+    }
+
+    .swiper-pagination-bullet {
+      background: #000;
+      opacity: 0.6;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+
+    .swiper-slide-button {
+      color: #000;
+      transition: 0.3s;
+    }
+
+    .swiper-slide-button:hover {
+      color: #fe0457;
+    } */
+
+    .card-item {
+  height: auto;
+  user-select: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, #ffffff10, #ffffff30);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+  margin-right: 20px;
+}
+
+.card-item:last-child {
+  margin-right: 0;
+}
+
+.card-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-item .user-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 5px solid #ff0077;
+  padding: 4px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  text-align: center;
+  
+  transition: transform 0.3s ease;
+}
+
+.card-item .user-image:hover {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.card-item .user-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-item .user-profession {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-item .message-button {
+  font-size: 16px;
+  padding: 10px 30px;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  background: linear-gradient(45deg, #ff0077, #ff4e00);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.card-item .message-button:hover {
+  background: linear-gradient(45deg, #ff4e00, #ff0077);
+  transform: scale(1.1);
+}
+
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+<body>
+
+  <!-- Web Development Section -->
+   <div class="container mt-5">
+    <div class="container">
+        <h2 class="section-title">Web Development</h2>
+        <div class="slider-wrapper swiper">
+          <div class="card-list swiper-wrapper">
+            <div class="card-item swiper-slide">
+              <img class="img-thumbnail text-center"
+              src="https://placeholder/200x200" alt="" class="text-center" width="200" height="100">
+              <h2 class="user-name">James Rodry</h2>
+              <p class="user-profession">Web Developer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/HayleyPhillips.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Hayley Phillips</h2>
+              <p class="user-profession">Frontend Developer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/HayleyPhillips.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Hayley Phillips</h2>
+              <p class="user-profession">Frontend Developer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/HayleyPhillips.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Hayley Phillips</h2>
+              <p class="user-profession">Frontend Developer</p>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    
+      <!-- Data Science Section -->
+      <div class="container">
+        <h2 class="section-title">Data Science</h2>
+        <div class="slider-wrapper swiper">
+          <div class="card-list swiper-wrapper">
+            <div class="card-item swiper-slide">
+                <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+                <h2 class="user-name">Shannon Howarth</h2>
+                <p class="user-profession">ML Engineer</p>
+              </div>
+            <div class="card-item swiper-slide">
+              <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Shannon Howarth</h2>
+              <p class="user-profession">ML Engineer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Shannon Howarth</h2>
+              <p class="user-profession">ML Engineer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Shannon Howarth</h2>
+              <p class="user-profession">ML Engineer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Shannon Howarth</h2>
+              <p class="user-profession">ML Engineer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Shannon Howarth</h2>
+              <p class="user-profession">ML Engineer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Shannon Howarth</h2>
+              <p class="user-profession">ML Engineer</p>
+            </div>
+            <div class="card-item swiper-slide">
+              <img src="images/ShannonHowarth.png" alt="User Image" class="user-image">
+              <h2 class="user-name">Shannon Howarth</h2>
+              <p class="user-profession">ML Engineer</p>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+   </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    const sliders = document.querySelectorAll('.slider-wrapper');
+
+    sliders.forEach((slider) => {
+      new Swiper(slider, {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 20,
+        pagination: {
+          el: slider.querySelector('.swiper-pagination'),
+          clickable: true,
+        },
+        navigation: {
+          nextEl: slider.querySelector('.swiper-button-next'),
+          prevEl: slider.querySelector('.swiper-button-prev'),
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
+    });
+  </script>
+</body>
+</html>
